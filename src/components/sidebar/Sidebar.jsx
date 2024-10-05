@@ -7,12 +7,14 @@ import {
   FaCog,
   FaQuestionCircle,
 } from "react-icons/fa";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
-  const [activeItem, setActiveItem] = useState("Dashboard");
+  const location = useLocation();
+  const [activeItem, setActiveItem] = useState(location.pathname);
 
-  const handleItemClick = (item) => {
-    setActiveItem(item);
+  const handleItemClick = (path) => {
+    setActiveItem(path);
   };
 
   return (
@@ -21,72 +23,78 @@ const Sidebar = () => {
         ProCode
       </h2>
       <ul className="space-y-4">
-        <li
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl  ${
-            activeItem === "Dashboard"
+        <Link
+          to="/"
+          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
+            activeItem === "/"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("Dashboard")}
+          onClick={() => handleItemClick("/")}
         >
           <FaHome className="mr-2" />
           <span className="hidden sm:inline">Dashboard</span>
-        </li>
-        <li
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl  ${
-            activeItem === "Courses"
+        </Link>
+        <Link
+          to="/courses"
+          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
+            activeItem === "/courses"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("Courses")}
+          onClick={() => handleItemClick("/courses")}
         >
           <FaBook className="mr-2" />
           <span className="hidden sm:inline">Courses</span>
-        </li>
-        <li
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl  ${
-            activeItem === "Profile"
+        </Link>
+        <Link
+          to="/profile"
+          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
+            activeItem === "/profile"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("Profile")}
+          onClick={() => handleItemClick("/profile")}
         >
           <FaUser className="mr-2" />
           <span className="hidden sm:inline">Profile</span>
-        </li>
-        <li
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl  ${
-            activeItem === "Settings"
+        </Link>
+        <Link
+          to="/settings"
+          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
+            activeItem === "/settings"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("Settings")}
+          onClick={() => handleItemClick("/settings")}
         >
           <FaCog className="mr-2" />
           <span className="hidden sm:inline">Settings</span>
-        </li>
-        <li
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl  ${
-            activeItem === "Support"
+        </Link>
+        <Link
+          to="/support"
+          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
+            activeItem === "/support"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("Support")}
+          onClick={() => handleItemClick("/support")}
         >
           <FaEnvelope className="mr-2" />
           <span className="hidden sm:inline">Support</span>
-        </li>
-        <li
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl  ${
-            activeItem === "FAQs"
+        </Link>
+        <Link
+          to="/faq"
+          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
+            activeItem === "/faq"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("FAQs")}
+          onClick={() => handleItemClick("/faq")}
         >
           <FaQuestionCircle className="mr-2" />
           <span className="hidden sm:inline">FAQs</span>
-        </li>
+        </Link>
       </ul>
     </div>
   );
