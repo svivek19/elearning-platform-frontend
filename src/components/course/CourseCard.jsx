@@ -5,11 +5,9 @@ import {
   FaPython,
   FaNodeJs,
   FaHtml5,
-  FaCss3,
   FaDatabase,
-  FaCheck,
+  FaBook,
 } from "react-icons/fa";
-import { FaPersonWalkingArrowRight } from "react-icons/fa6";
 
 const coursesData = [
   {
@@ -68,10 +66,10 @@ const CourseCard = () => {
               : course.description}
           </p>
 
-          <div className="flex items-center gap-2 bg-teal-500 text-teal-50 text-sm p-2 w-fit mt-2 rounded-md hover:bg-teal-600 cursor-pointer transition duration-300">
+          <div className="flex items-center gap-2 border-2 border-teal-500 text-sm p-2 w-fit mt-2 rounded-md hover:bg-teal-500 cursor-pointer transition duration-300">
             <p>Enroll</p>
             <span>
-              <FaCheck />
+              <FaBook />
             </span>
           </div>
         </div>

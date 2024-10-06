@@ -20,7 +20,7 @@ const Sidebar = () => {
   return (
     <div className="bg-slate-50 min-h-screen max-md:w-fit w-52 max-sm:p-2 p-4">
       <h2 className="text-xl font-bold mb-6 tracking-widest text-teal-700 max-sm:text-lg">
-        ProCode
+        VCode
       </h2>
       <ul className="space-y-4">
         <Link
