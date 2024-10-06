@@ -3,7 +3,7 @@ import Cards from "../../components/dashboard/Cards";
 
 const Dashboard = () => {
   return (
-    <div className="">
+    <div>
       <h1 className="max-sm:text-xl text-2xl font-medium text-teal-700 mb-4">
         Welcome to ProCode
       </h1>
