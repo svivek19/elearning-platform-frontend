@@ -9,13 +9,15 @@ import Profile from "./pages/profile/Profile";
 const App = () => {
   return (
     <Router>
-      <div className="flex flex-row">
-        <div>
+      <div className="flex flex-row h-screen">
+        <div className="sticky top-0 h-full">
           <Sidebar />
         </div>
-        <div className="w-full">
-          <Navbar />
-          <div className="max-sm:p-2 p-4 text-xl">
+        <div className="flex flex-col w-full">
+          <div className="sticky top-0 z-10">
+            <Navbar />
+          </div>
+          <div className="overflow-y-auto h-full max-sm:p-2 p-4 text-xl">
             <Routes>
               <Route path="/" element={<Dashboard />} />
               <Route path="/courses" element={<Course />} />
