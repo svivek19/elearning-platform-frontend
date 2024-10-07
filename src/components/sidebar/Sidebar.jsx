@@ -18,13 +18,17 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="bg-slate-50 min-h-screen max-md:w-fit w-52 max-sm:p-2 p-4">
+    <div
+      className={`bg-slate-50 min-h-screen max-md:w-fit w-52 max-sm:p-2 p-4 ${
+        location.pathname === "/" ? "hidden" : "block"
+      }`}
+    >
       <h2 className="text-xl font-bold mb-6 tracking-widest text-teal-700 max-sm:text-lg">
         VCode
       </h2>
       <ul className="space-y-4">
         <Link
-          to="/"
+          to="/dashboard"
           className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
             activeItem === "/"
               ? "bg-teal-100 border-teal-700 border-r-4"
