@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import accountvivek from "../../assets/account-vivek.svg";
 import AxiosInstance from "../../utils/AxiosInstance";
+import toast, { Toaster } from "react-hot-toast";
+import { MdOutlineDoneAll } from "react-icons/md";
+import { RiErrorWarningFill } from "react-icons/ri";
 
 const ProfileUserInfo = () => {
   // State for form fields
@@ -25,13 +28,30 @@ const ProfileUserInfo = () => {
     try {
       const response = await AxiosInstance.post("/user/create", userData);
       console.log(response);
+      toast.success("Account Register successfully!", {
+        icon: <MdOutlineDoneAll />,
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     } catch (error) {
       console.log(error);
+      toast.error("Failed to register account!", {
+        icon: <RiErrorWarningFill />,
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
   return (
     <div className="flex flex-col md:flex-row-reverse">
+      <Toaster />
       <div className="flex-1 flex items-center justify-center mb-4 md:mb-0">
         <img
           src={accountvivek}
