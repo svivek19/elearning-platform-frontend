@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { json, Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { RiErrorWarningFill } from "react-icons/ri";
+import { MdOutlineDoneAll } from "react-icons/md";
+import AxiosInstance from "../../utils/AxiosInstance";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
     email: "",
-    password: "",
+    phone: "",
   });
 
   const handleChange = (e) => {
@@ -15,13 +19,62 @@ const Login = () => {
     }));
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Logging in with data:", loginData);
+
+    console.log(loginData);
+
+    if (loginData.email === "" || loginData.phone === "") {
+      toast.error("Fill all required fields", {
+        icon: <RiErrorWarningFill />,
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+    }
+    try {
+      const response = await AxiosInstance.post("/user/login", loginData);
+      if (response.status === 200) {
+        toast.success("Login successful!", {
+          icon: <MdOutlineDoneAll />,
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+        localStorage.setItem(
+          "userData",
+          JSON.stringify(response.data.response)
+        );
+      } else {
+        toast.error("Failed to login. Please try again.", {
+          icon: <RiErrorWarningFill />,
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to login. Please try again.", {
+        icon: <RiErrorWarningFill />,
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+    }
   };
 
   return (
     <div className="flex flex-col items-center w-full max-w-sm mx-auto justify-center h-full">
+      <Toaster />
       <h2 className="text-2xl font-bold mb-4">Login Here</h2>
       <form className="w-full" onSubmit={handleLogin}>
         <div className="mb-4">
@@ -35,7 +88,6 @@ const Login = () => {
             onChange={handleChange}
             placeholder="Email"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md outline-none"
-            required
           />
         </div>
         <div className="mb-4">
@@ -43,13 +95,12 @@ const Login = () => {
             Password
           </label>
           <input
-            type="password"
-            name="password"
-            value={loginData.password}
+            type="phone"
+            name="phone"
+            value={loginData.phone}
             onChange={handleChange}
-            placeholder="Password"
+            placeholder="Phone Number"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md outline-none"
-            required
           />
         </div>
         <button
