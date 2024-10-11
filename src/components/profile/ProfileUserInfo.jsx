@@ -27,6 +27,7 @@ const ProfileUserInfo = () => {
   const sendUserData = async () => {
     try {
       const response = await AxiosInstance.post("/user/create", userData);
+      console.log(response);
       toast.success("Account Register successfully!", {
         icon: <MdOutlineDoneAll />,
         style: {
@@ -49,16 +50,16 @@ const ProfileUserInfo = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row-reverse">
+    <div className="flex flex-col md:flex-row">
       <Toaster />
-      <div className="flex-1 flex items-center justify-center mb-4 md:mb-0">
+      <div className="md:w-1/2 flex items-center justify-center mb-4 md:mb-0">
         <img
           src={accountvivek}
-          className="h-48 md:h-full object-cover w-full"
+          className="h-48 md:h-64 lg:h-80 object-cover w-full md:w-auto"
           alt="Profile"
         />
       </div>
-      <div className="flex-1 p-4">
+      <div className="md:w-1/2 p-4">
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700">
             Full Name
@@ -116,7 +117,7 @@ const ProfileUserInfo = () => {
         </div>
         <button
           onClick={sendUserData}
-          className="bg-blue-500 rounded-lg py-1 px-2 text-white text-base hover:bg-blue-600"
+          className="w-full md:w-auto bg-blue-500 rounded-lg py-2 px-4 text-white text-base hover:bg-blue-600"
         >
           Submit
         </button>
