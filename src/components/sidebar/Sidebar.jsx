@@ -11,7 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
-  const [activeItem, setActiveItem] = useState("/dashboard");
+  const [activeItem, setActiveItem] = useState(location.pathname);
 
   const handleItemClick = (path) => {
     setActiveItem(path);
