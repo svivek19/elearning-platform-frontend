@@ -11,7 +11,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
-  const [activeItem, setActiveItem] = useState(location.pathname);
+  const [activeItem, setActiveItem] = useState("/dashboard");
 
   const handleItemClick = (path) => {
     setActiveItem(path);
@@ -30,11 +30,11 @@ const Sidebar = () => {
         <Link
           to="/dashboard"
           className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
-            activeItem === "/"
+            activeItem === "/dashboard"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("/")}
+          onClick={() => handleItemClick("/dashboard")}
         >
           <FaHome className="mr-2" />
           <span className="hidden sm:inline">Dashboard</span>

@@ -2,7 +2,7 @@ import React from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { TbDoorExit } from "react-icons/tb";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
@@ -49,13 +49,23 @@ const Navbar = () => {
               </span>{" "}
             </h3>
           </div>
-          <button
-            className="flex items-center cursor-pointer"
-            title="Logout"
-            onClick={handleLogout}
-          >
-            <RiLogoutCircleRLine size={25} />
-          </button>
+          {user?.fullName ? (
+            <button
+              className="flex items-center cursor-pointer"
+              title="Logout"
+              onClick={handleLogout}
+            >
+              <RiLogoutCircleRLine size={25} />
+            </button>
+          ) : (
+            <Link
+              to={"/"}
+              className="flex items-center bg-blue-500 w-fit px-2 py-0 text-sm text-white rounded-md hover:bg-blue-600 duration-300"
+            >
+              {" "}
+              Login{" "}
+            </Link>
+          )}
         </div>
       </div>
     </nav>
