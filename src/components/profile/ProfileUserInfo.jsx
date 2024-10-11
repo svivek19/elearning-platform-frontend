@@ -27,7 +27,6 @@ const ProfileUserInfo = () => {
   const sendUserData = async () => {
     try {
       const response = await AxiosInstance.post("/user/create", userData);
-      console.log(response);
       toast.success("Account Register successfully!", {
         icon: <MdOutlineDoneAll />,
         style: {

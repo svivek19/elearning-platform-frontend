@@ -117,9 +117,9 @@ const Login = () => {
       </form>
       <Link
         to={"/dashboard"}
-        className="my-4 bg-teal-700 w-fit px-2 py-1 rounded-lg text-white text-base cursor-pointer"
+        className="my-4 bg-teal-100 border border-teal-500 w-fit px-2 py-1 rounded-lg text-teal-700 text-base cursor-pointer"
       >
-        Guest
+        Continue as a Guest User
       </Link>
     </div>
   );
