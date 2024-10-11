@@ -1,9 +1,35 @@
 import React from "react";
-import { FaRegBell, FaRegUserCircle } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import { RiLogoutCircleRLine } from "react-icons/ri";
+import { TbDoorExit } from "react-icons/tb";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const userData = localStorage.getItem("userData");
+  // convert string to object
+  const user = JSON.parse(userData);
+
+  // logout function
+  const handleLogout = () => {
+    localStorage.removeItem("userData");
+    toast.success("Logout successful!", {
+      icon: <TbDoorExit />,
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
+
+    const timer = setTimeout(() => {
+      navigate("/");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  };
 
   return (
     <nav
@@ -11,14 +37,25 @@ const Navbar = () => {
         location.pathname === "/" ? "hidden" : "block"
       }`}
     >
+      <Toaster />
       <div className="flex justify-end items-center">
-        <div className="flex space-x-8">
+        <div className="flex space-x-4">
           <div>
-            <FaRegBell size={20} />
+            <h3>
+              Welcome,{" "}
+              <span className="capitalize text-teal-700 font-semibold">
+                {" "}
+                {user?.fullName || "User"}{" "}
+              </span>{" "}
+            </h3>
           </div>
-          <div>
-            <FaRegUserCircle size={20} />
-          </div>
+          <button
+            className="flex items-center cursor-pointer"
+            title="Logout"
+            onClick={handleLogout}
+          >
+            <RiLogoutCircleRLine size={25} />
+          </button>
         </div>
       </div>
     </nav>

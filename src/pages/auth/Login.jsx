@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { MdOutlineDoneAll } from "react-icons/md";
 import AxiosInstance from "../../utils/AxiosInstance";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
     phone: "",
@@ -21,8 +22,6 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    console.log(loginData);
 
     if (loginData.email === "" || loginData.phone === "") {
       toast.error("Fill all required fields", {
@@ -49,6 +48,12 @@ const Login = () => {
           "userData",
           JSON.stringify(response.data.response)
         );
+
+        const timer = setTimeout(() => {
+          navigate("/dashboard");
+        }, 2000);
+
+        return () => clearTimeout(timer);
       } else {
         toast.error("Failed to login. Please try again.", {
           icon: <RiErrorWarningFill />,
@@ -110,9 +115,12 @@ const Login = () => {
           Login
         </button>
       </form>
-      <div className="my-4 bg-teal-950 text-white text-base">
-        <Link to={"/dashboard"}>demo</Link>
-      </div>
+      <Link
+        to={"/dashboard"}
+        className="my-4 bg-teal-700 w-fit px-2 py-1 rounded-lg text-white text-base cursor-pointer"
+      >
+        Guest
+      </Link>
     </div>
   );
 };
