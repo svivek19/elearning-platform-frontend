@@ -1,5 +1,6 @@
 import React from "react";
 import Cards from "../../components/dashboard/Cards";
+import UserTable from "../../components/dashboard/UserTable";
 
 const Dashboard = () => {
   return (
@@ -14,6 +15,10 @@ const Dashboard = () => {
 
       <div>
         <Cards />
+      </div>
+
+      <div>
+        <UserTable />
       </div>
     </div>
   );

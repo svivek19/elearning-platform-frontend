@@ -4,7 +4,6 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Course from "./pages/courses/Course";
-import Profile from "./pages/profile/Profile";
 import Login from "./pages/auth/Login";
 
 const App = () => {
@@ -23,7 +22,6 @@ const App = () => {
               <Route path="/" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/courses" element={<Course />} />
-              <Route path="/profile" element={<Profile />} />
             </Routes>
           </div>
         </div>

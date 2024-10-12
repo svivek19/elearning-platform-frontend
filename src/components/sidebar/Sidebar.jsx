@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   FaHome,
-  FaUser,
   FaBook,
   FaEnvelope,
   FaCog,
@@ -51,18 +50,7 @@ const Sidebar = () => {
           <FaBook className="mr-2" />
           <span className="hidden sm:inline">Courses</span>
         </Link>
-        <Link
-          to="/profile"
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
-            activeItem === "/profile"
-              ? "bg-teal-100 border-teal-700 border-r-4"
-              : "hover:bg-teal-100"
-          } max-sm:justify-center`}
-          onClick={() => handleItemClick("/profile")}
-        >
-          <FaUser className="mr-2" />
-          <span className="hidden sm:inline">Profile</span>
-        </Link>
+
         <Link
           to="/settings"
           className={`flex items-center p-4 text-teal-900 rounded-l-xl ${

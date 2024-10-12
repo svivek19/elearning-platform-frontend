@@ -38,18 +38,20 @@ const CourseDetails = () => {
               className="bg-teal-50 border border-teal-500 text-teal-700 px-6 py-4 cursor-pointer flex justify-between items-center"
               onClick={() => toggleCourse(course.courseID)}
             >
-              <h3 className="text-lg font-medium">{course.courseName}</h3>
+              <h3 className="text-lg font-medium capitalize">
+                {course.courseName}
+              </h3>
               <span>{expandedCourse === course.courseID ? "▲" : "▼"}</span>
             </div>
             {expandedCourse === course.courseID && (
               <div className="px-6 py-4 bg-white">
-                <p>
+                <p className="capitalize">
                   <strong>Type:</strong> {course.type}
                 </p>
-                <p>
+                <p className="capitalize">
                   <strong>Duration:</strong> {course.duration}
                 </p>
-                <p>
+                <p className="capitalize">
                   <strong>Description:</strong> {course.description}
                 </p>
 
