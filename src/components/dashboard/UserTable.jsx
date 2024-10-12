@@ -108,9 +108,9 @@ const UserTable = ({ data }) => {
                     </td>
                     <td
                       className={`px-4 py-2 text-sm whitespace-normal break-words ${
-                        user.enrolledCourse
-                          ? "text-blue-500"
-                          : "text-red-500 font-semibold text-center"
+                        user.enrolledCourse !== "Not Enrolled"
+                          ? "text-gray-700"
+                          : "text-red-500 font-semibold"
                       }`}
                     >
                       {user.enrolledCourse}
