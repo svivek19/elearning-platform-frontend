@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import {
-  FaHome,
-  FaBook,
-  FaEnvelope,
-  FaCog,
-  FaQuestionCircle,
-} from "react-icons/fa";
+import { FaHome, FaBook } from "react-icons/fa";
+import { MdManageAccounts } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
@@ -52,40 +47,16 @@ const Sidebar = () => {
         </Link>
 
         <Link
-          to="/settings"
+          to="/manage-accounts"
           className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
-            activeItem === "/settings"
+            activeItem === "/manage-accounts"
               ? "bg-teal-100 border-teal-700 border-r-4"
               : "hover:bg-teal-100"
           } max-sm:justify-center`}
-          onClick={() => handleItemClick("/settings")}
+          onClick={() => handleItemClick("/manage-accounts")}
         >
-          <FaCog className="mr-2" />
-          <span className="hidden sm:inline">Settings</span>
-        </Link>
-        <Link
-          to="/support"
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
-            activeItem === "/support"
-              ? "bg-teal-100 border-teal-700 border-r-4"
-              : "hover:bg-teal-100"
-          } max-sm:justify-center`}
-          onClick={() => handleItemClick("/support")}
-        >
-          <FaEnvelope className="mr-2" />
-          <span className="hidden sm:inline">Support</span>
-        </Link>
-        <Link
-          to="/faq"
-          className={`flex items-center p-4 text-teal-900 rounded-l-xl ${
-            activeItem === "/faq"
-              ? "bg-teal-100 border-teal-700 border-r-4"
-              : "hover:bg-teal-100"
-          } max-sm:justify-center`}
-          onClick={() => handleItemClick("/faq")}
-        >
-          <FaQuestionCircle className="mr-2" />
-          <span className="hidden sm:inline">FAQs</span>
+          <MdManageAccounts className="mr-2" />
+          <span className="hidden sm:inline">Manage Users</span>
         </Link>
       </ul>
     </div>
