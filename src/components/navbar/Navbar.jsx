@@ -8,13 +8,8 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const userData = localStorage.getItem("userData");
-  // convert string to object
-  const user = JSON.parse(userData);
-
   // logout function
   const handleLogout = () => {
-    localStorage.removeItem("userData");
     toast.success("Logout successful!", {
       icon: <TbDoorExit />,
       style: {
@@ -44,9 +39,8 @@ const Navbar = () => {
             <h3>
               Welcome,{" "}
               <span className="capitalize text-teal-700 font-semibold">
-                {" "}
-                {user?.fullName || "Admin"}{" "}
-              </span>{" "}
+                Admin
+              </span>
             </h3>
           </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import { RiErrorWarningFill } from "react-icons/ri";
 import { MdOutlineDoneAll } from "react-icons/md";
@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [loginData, setLoginData] = useState({
     email: "",
-    phone: "",
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -34,7 +34,7 @@ const Login = () => {
       });
     }
     try {
-      const response = await AxiosInstance.post("/user/login", loginData);
+      const response = await AxiosInstance.post("/user/admin-login", loginData);
       if (response.status === 200) {
         toast.success("Login successful!", {
           icon: <MdOutlineDoneAll />,
@@ -44,10 +44,6 @@ const Login = () => {
             color: "#fff",
           },
         });
-        localStorage.setItem(
-          "userData",
-          JSON.stringify(response.data.response)
-        );
 
         const timer = setTimeout(() => {
           navigate("/dashboard");
@@ -100,11 +96,11 @@ const Login = () => {
             Password
           </label>
           <input
-            type="phone"
-            name="phone"
-            value={loginData.phone}
+            type="password"
+            name="password"
+            value={loginData.password}
             onChange={handleChange}
-            placeholder="Phone Number"
+            placeholder="Password"
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md outline-none"
           />
         </div>
@@ -115,12 +111,6 @@ const Login = () => {
           Login
         </button>
       </form>
-      <Link
-        to={"/dashboard"}
-        className="my-4 bg-teal-100 border border-teal-500 w-fit px-2 py-1 rounded-lg text-teal-700 text-base cursor-pointer"
-      >
-        Continue as a Guest User
-      </Link>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const AxiosInstance = axios.create({
-  baseURL: "https://elearning-platform-backend-yrbf.onrender.com",
+  baseURL: "http://localhost:5005",
   headers: {
     "Content-Type": "application/json",
   },
