@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Course from "./pages/courses/Course";
 import Login from "./pages/auth/Login";
+import ManageUsers from "./pages/settings/ManageUsers";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
               <Route path="/" element={<Login />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/courses" element={<Course />} />
+              <Route path="/manage-accounts" element={<ManageUsers />} />
             </Routes>
           </div>
         </div>
